@@ -1,0 +1,19 @@
+# Grafana values — used with kube-prometheus-stack above.
+# Access: kubectl port-forward -n monitoring svc/kube-prometheus-grafana 3001:80
+# Login: admin / admin123, import monitoring/grafana-dashboard.json
+grafana:
+  adminPassword: "admin123"
+  dashboardProviders:
+    dashboardproviders.yaml:
+      apiVersion: 1
+      providers:
+        - name: medidesk
+          orgId: 1
+          folder: MediDesk
+          type: file
+          options:
+            path: /var/lib/grafana/dashboards/medidesk
+  dashboards:
+    default:
+      medidesk:
+        file: /var/lib/grafana/dashboards/medidesk/medidesk.json

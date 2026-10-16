@@ -1,0 +1,17 @@
+# Prometheus (kube-prometheus-stack) values — install with:
+# helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+# helm upgrade --install kube-prometheus prometheus-community/kube-prometheus-stack \
+#   -n monitoring --create-namespace -f monitoring/prometheus-values.yaml
+prometheus:
+  prometheusSpec:
+    serviceMonitorSelectorNilUsesHelmValues: false
+    serviceMonitorSelector: {}
+    serviceMonitorNamespaceSelector: {}
+    scrapeInterval: 15s
+grafana:
+  enabled: true
+  adminPassword: "admin123"
+  service:
+    type: ClusterIP
+alertmanager:
+  enabled: false

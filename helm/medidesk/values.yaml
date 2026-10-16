@@ -1,0 +1,22 @@
+namespace: medidesk
+
+backend:
+  image: ghcr.io/YOUR_USERNAME/medidesk-backend
+  tag: latest
+  replicas: 2
+  port: 8000
+
+frontend:
+  image: ghcr.io/YOUR_USERNAME/medidesk-frontend
+  tag: latest
+  replicas: 2
+  port: 8080
+
+postgres:
+  password: medidesk
+  storage: 5Gi
+
+ingress:
+  enabled: true
+  className: nginx
+  host: medidesk.local

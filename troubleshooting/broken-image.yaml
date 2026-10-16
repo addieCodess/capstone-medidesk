@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-broken
+  namespace: medidesk
+spec:
+  replicas: 1
+  selector:
+    matchLabels: { app: backend-broken }
+  template:
+    metadata:
+      labels: { app: backend-broken }
+    spec:
+      containers:
+        - name: backend
+          # INTENTIONALLY WRONG TAG for troubleshooting demo
+          image: ghcr.io/YOUR_USERNAME/medidesk-backend:does-not-exist
+          ports:
+            - { containerPort: 8000 }

@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-broken-svc
+  namespace: medidesk
+spec:
+  type: ClusterIP
+  # INTENTIONALLY WRONG SELECTOR — no endpoints
+  selector: { app: backend-that-does-not-exist }
+  ports:
+    - { port: 8000, targetPort: 8000 }

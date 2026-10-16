@@ -1,0 +1,8 @@
+backend:
+  tag: dev
+frontend:
+  tag: dev
+ingress:
+  enabled: true
+  className: nginx
+  host: medidesk.local
