@@ -86,7 +86,7 @@ jobs:
             ./frontend
 
       - name: Scan backend image with Trivy
-        uses: aquasecurity/trivy-action@0.30.0
+        uses: aquasecurity/trivy-action@v0.36.0
         with:
           image-ref: ${{ env.REGISTRY }}/${{ steps.owner.outputs.value }}/medidesk-backend:${{ github.sha }}
           severity: HIGH,CRITICAL
@@ -94,7 +94,7 @@ jobs:
           exit-code: "1"
 
       - name: Scan frontend image with Trivy
-        uses: aquasecurity/trivy-action@0.30.0
+        uses: aquasecurity/trivy-action@v0.36.0
         with:
           image-ref: ${{ env.REGISTRY }}/${{ steps.owner.outputs.value }}/medidesk-frontend:${{ github.sha }}
           severity: HIGH,CRITICAL
