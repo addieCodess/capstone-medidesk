@@ -24,12 +24,15 @@ spec:
           image: "{{ .Values.backend.image }}:{{ .Values.backend.tag }}"
           ports:
             - containerPort: {{ .Values.backend.port }}
+
           env:
-            - name: DATABASE_URL
-              value: "postgresql+psycopg://medidesk:$(POSTGRES_PASSWORD)@postgres:5432/medidesk"
             - name: POSTGRES_PASSWORD
               valueFrom:
-                secretKeyRef: { name: postgres-secret, key: password }
+                secretKeyRef:
+                  name: postgres-secret
+                  key: password
+            - name: DATABASE_URL
+              value: "postgresql+psycopg://medidesk:$(POSTGRES_PASSWORD)@postgres:5432/medidesk"
           livenessProbe:
             httpGet: { path: /health, port: 8000 }
             initialDelaySeconds: 10
