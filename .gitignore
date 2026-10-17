@@ -11,3 +11,5 @@ __pycache__/
 *.tfstate.backup
 .venv/
 venv/
+*.tfplan
+tfplan
